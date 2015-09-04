@@ -1,0 +1,33 @@
+﻿<Window x:Class="SportsOdds.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SportsOdds"
+        mc:Ignorable="d"
+        Title="Odds" Height="600" Width="575">
+    <Grid>
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Odds}" AlternationCount="2" AlternatingRowBackground="BurlyWood">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="League" Binding="{Binding Model.SportName}" IsReadOnly="True" />
+                <DataGridTemplateColumn Header="Favorite"  IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Model.FavoriteTeamName}" Foreground="{Binding FavoriteColor}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Underdog"  IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Model.UnderdogTeamName}" Foreground="{Binding UnderdogColor}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Spread" Binding="{Binding Model.PointSpread}" IsReadOnly="True" />
+                <DataGridTextColumn Header="Total" Binding="{Binding Model.TotalPoints}" IsReadOnly="True" />
+                <DataGridTextColumn Header="Date" Binding="{Binding Model.Date}" IsReadOnly="True" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
